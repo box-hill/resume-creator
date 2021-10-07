@@ -5,14 +5,17 @@
 
 import React from "react";
 
-
+class PreviewResume extends React.Component {
+    render() {
+        return (
+            <div className="preview">
+                <div>Name: {this.props.firstName + ' ' + this.props.lastName}</div>
+                <div>!!!@#: {this.props.phoneNum + ' ' + this.props.emailAdd}</div>
+            </div>
+        );
+    }
+}
   
-const PreviewResume = (props) => {
-    const { name } = props;
-    
-    return (
-        <div>Hey {name}!</div>
-    );
-};
+
 
 export default PreviewResume;

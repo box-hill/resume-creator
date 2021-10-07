@@ -9,7 +9,10 @@ class App extends Component {
     super();
 
     this.state = {
-      name: '',
+      firstName: '',
+      lastName: '',
+      phoneNum: '',
+      emailAdd: '',
       education: [
           {
               institution: '',
@@ -19,14 +22,13 @@ class App extends Component {
       ],
       skills: '',// gona use uniqid for this
     };  
-    this.handleChange = this.handleChange.bind(this);
     this.onSubmitResume = this.onSubmitResume.bind(this);
   }
 
-  handleChange = (e) => {
+  onChangeHandler = (field, value) => {
     console.log('calle dme');
     this.setState({
-      name: e.target.value
+      [field]: value,
     });
   }
 
@@ -37,15 +39,15 @@ class App extends Component {
 
 
   render() {
-    const { name } = this.state;
-    const { handleChange, onSubmitResume } = this;
+    const { onChangeHandler, onSubmitResume } = this;
+    const { firstName } = this.state;
 
     return (
       <div className="body">
         <header>Header</header>
         <div className="container">
-          <InputForm changeHandler={handleChange} name={name}/>
-          <PreviewResume name={name}/>
+          <InputForm onChange={onChangeHandler.bind(this)} />
+          <PreviewResume {...this.state}/>
         </div>
         <footer>Footer</footer>
       </div>

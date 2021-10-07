@@ -5,19 +5,35 @@ import React, { Component } from "react";
 class InputForm extends Component {
     constructor(props) {
       super(props);
-    } 
+    }
+    
+    onFieldChange(e) {
+      const fieldName = e.target.name;
+      const fieldValue = e.target.value;
+      this.props.onChange(fieldName, fieldValue);
+    }
 
     render() {
-      const { handleChange, name } = this.props;
-  
       return (
         <div>
             <form>
-                <label htmlFor="nameInput">Name: </label>
-                <input onChange={() => handleChange}
-                value={name}
-                type="text" id="nameInput"/>
-                <button type="submit">Add Task</button>
+                <label htmlFor="firstNameInput">First Name: </label>
+                <input onChange={this.onFieldChange.bind(this)} 
+                name="firstName" type="text" id="firstNameInput"/>
+
+                <label htmlFor="secondNameInput">Last Name: </label>
+                <input onChange={this.onFieldChange.bind(this)} 
+                name="lastName" type="text" id="secondNameInput"/>
+
+                <div>
+                  <label htmlFor="phoneNum">Phone Number: </label>
+                  <input onChange={this.onFieldChange.bind(this)} 
+                  name="phoneNum" type="text" id="phoneNum"/>
+                  <label htmlFor="emailAdd">Email: </label>
+                  <input onChange={this.onFieldChange.bind(this)} 
+                  name="emailAdd" type="text" id="emailAdd"/>
+                </div>
+                <button type="submit">Submit</button>
             </form>
         </div>
       )
