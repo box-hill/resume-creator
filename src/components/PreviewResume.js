@@ -5,10 +5,22 @@
 
 import React from "react";
 
-class PreviewResume extends React.Component {
+function returnList(listName){
+    console.log(listName);
+    return (
+        <ul>
+            {listName.map((item) => {
+            return <li key={item.id}> {item.text}</li>
+            })}
+        </ul>
+    )
+}
 
+
+class PreviewResume extends React.Component {
+    
     render() {
-        const { firstName, lastName, skills, githubLink} = this.props;
+        const { firstName, lastName, skills, githubLink, phoneNum, emailAdd, awards} = this.props;
         return (
             <div className="preview">
                 <div>
@@ -17,20 +29,18 @@ class PreviewResume extends React.Component {
                     <span>{lastName.charAt(0)}</span>
                     <span>{lastName.slice(1,lastName.length)}</span>                   
                 </div>
-                <div>!!!@#: {this.props.phoneNum + ' ' + this.props.emailAdd}</div>
+                <div>Phone Number: {phoneNum}</div>
+                <div>Email: {emailAdd}</div>
                 {githubLink.length === 0 ? null :<div>
                     <a href={githubLink} target="blank">Github</a>
                 </div>
                 }
-                <div>Skills: {this.props.skill.text}</div>
-                <ul>
-                    {skills.map((skill) => {
-                    return (
-                    <li key={skill.id}>
-                        {skill.text}
-                    </li>)
-                    })}
-                </ul>
+                <div>Skills: </div>
+                {returnList(skills)}
+
+                <div>Awards: </div>
+                {returnList(awards)}
+
             </div>
         );
     }
