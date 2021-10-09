@@ -15,8 +15,6 @@ class UserListInput extends Component {
 
     onAddItem = (e) => {
       e.preventDefault();
-      const fieldName = e.target.name;
-      //this.props.onSubmit(fieldName);
       this.props.onSubmit(this.props.itemName);
     };
 
