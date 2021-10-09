@@ -9,10 +9,11 @@ class UserSkills extends Component {
     
     onFieldChange(e) {
       const fieldValue = e.target.value;
-      this.props.onChange(fieldValue);
+      const fieldName = e.target.name;
+      this.props.onChange(fieldName, fieldValue);
     }
 
-    onAddSkill = (e) => {
+    onAddItem = (e) => {
       e.preventDefault();
       console.log(e);
       this.props.onSubmit();
@@ -22,11 +23,12 @@ class UserSkills extends Component {
       const { skill, skills, handler } = this.props;
       return (
         <div>
-          <form onSubmit={this.onAddSkill.bind(this)}>
+          <form onSubmit={this.onAddItem.bind(this)}>
             <label htmlFor="skillInput">Skills: </label>
             <input 
               maxLength="70"
               onChange={this.onFieldChange.bind(this)}
+              name="skill"
               value={skill.text} 
               type="text" id="skillInput"
             />

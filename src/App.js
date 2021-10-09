@@ -42,12 +42,12 @@ class App extends Component {
     });
   }
 
-  onSkillsChangeHandler = (value) => {
+  onListChangeHandler = (field, value) => {
     console.log('calle dme');
     this.setState({
-      skill : {
+      [field] : {
         text: value,
-        id: this.state.skill.id,
+        id: this.state[field].id,
       }
     });
   }
@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   render() {
-    const { onChangeHandler, onSkillsChangeHandler, onAddSkill } = this;
+    const { onChangeHandler, onListChangeHandler, onAddSkill } = this;
     const {  } = this.state;
 
     return (
@@ -79,7 +79,7 @@ class App extends Component {
         <div className="container">
           <UserPersonalInfo onChange={onChangeHandler.bind(this)} />
           <UserSkills 
-            onChange={onSkillsChangeHandler.bind(this)} 
+            onChange={onListChangeHandler.bind(this)} 
             onSubmit={onAddSkill.bind(this)}
             {...this.state} 
             handler={this.removeHandler}
