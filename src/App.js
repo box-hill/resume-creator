@@ -5,7 +5,7 @@ import uniqid from "uniqid";
 
 import PreviewResume from "./components/PreviewResume";
 import UserPersonalInfo from "./components/UserPersonalInfo";
-import UserSkills from "./components/UserSkills.js";
+import UserListInput from "./components/UserListInput.js";
 
 
 class App extends Component {
@@ -31,6 +31,11 @@ class App extends Component {
         id: uniqid()
       },
       skills: [],
+      award: {
+        text: '',
+        id: uniqid()
+      },
+      awards: [],
     };  
     this.removeHandler = this.removeHandler.bind(this)
   }
@@ -52,25 +57,27 @@ class App extends Component {
     });
   }
 
-  onAddSkill = () => {
+  onAddItemHandler = (field) => {
+    const fieldPlural = field + 's';
     this.setState(
       {
-        skills: this.state.skills.concat(this.state.skill),
-        skill: { text: '', 
+        [fieldPlural]: this.state[fieldPlural].concat(this.state[field]),
+        [field]: { text: '', 
                 id: uniqid(),
               },
       });
   }
 
   // remove selected skills from array
-  removeHandler = (id) => {
+  removeHandler = (id, field) => {
+    const fieldPlural = field + 's';
     this.setState({
-      skills: this.state.skills.filter((skill) => skill.id!==id),
+      [fieldPlural]: this.state[fieldPlural].filter((field) => field.id!==id),
     })
   }
 
   render() {
-    const { onChangeHandler, onListChangeHandler, onAddSkill } = this;
+    const { onChangeHandler, onListChangeHandler, onAddItemHandler } = this;
     const {  } = this.state;
 
     return (
@@ -78,11 +85,25 @@ class App extends Component {
         <header>Header</header>
         <div className="container">
           <UserPersonalInfo onChange={onChangeHandler.bind(this)} />
-          <UserSkills 
+          <UserListInput 
             onChange={onListChangeHandler.bind(this)} 
-            onSubmit={onAddSkill.bind(this)}
+            onSubmit={onAddItemHandler.bind(this)}
+            item={this.state.skill}
+            items={this.state.skills}
+            itemName="skill"
+            displayName="Skills: "
             {...this.state} 
-            handler={this.removeHandler}
+            removeHandler={this.removeHandler}
+          />
+          <UserListInput 
+            onChange={onListChangeHandler.bind(this)} 
+            onSubmit={onAddItemHandler.bind(this)}
+            item={this.state.award}
+            items={this.state.awards}
+            itemName="award"
+            displayName="Awards: "
+            {...this.state} 
+            removeHandler={this.removeHandler}
           />
           <ReactToPrint trigger={() => {
             return <a href="#">Print this out!</a>

@@ -8,7 +8,7 @@ import React from "react";
 class PreviewResume extends React.Component {
 
     render() {
-        const { firstName, lastName, skills} = this.props;
+        const { firstName, lastName, skills, githubLink} = this.props;
         return (
             <div className="preview">
                 <div>
@@ -18,9 +18,10 @@ class PreviewResume extends React.Component {
                     <span>{lastName.slice(1,lastName.length)}</span>                   
                 </div>
                 <div>!!!@#: {this.props.phoneNum + ' ' + this.props.emailAdd}</div>
-                <div>
-                    <a href={this.props.githubLink} target="blank">Github</a>
+                {githubLink.length === 0 ? null :<div>
+                    <a href={githubLink} target="blank">Github</a>
                 </div>
+                }
                 <div>Skills: {this.props.skill.text}</div>
                 <ul>
                     {skills.map((skill) => {

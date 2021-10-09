@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import uniqid from "uniqid";
 
 
-class UserSkills extends Component {
+class UserListInput extends Component {
     constructor(props) {
       super(props);
     }
@@ -15,31 +15,32 @@ class UserSkills extends Component {
 
     onAddItem = (e) => {
       e.preventDefault();
-      console.log(e);
-      this.props.onSubmit();
+      const fieldName = e.target.name;
+      //this.props.onSubmit(fieldName);
+      this.props.onSubmit(this.props.itemName);
     };
 
     render() {
-      const { skill, skills, handler } = this.props;
+      const { item, items, itemName, displayName, removeHandler } = this.props;
       return (
         <div>
           <form onSubmit={this.onAddItem.bind(this)}>
-            <label htmlFor="skillInput">Skills: </label>
+            <label htmlFor={displayName}>{displayName}</label>
             <input 
               maxLength="70"
               onChange={this.onFieldChange.bind(this)}
-              name="skill"
-              value={skill.text} 
-              type="text" id="skillInput"
+              name={itemName}
+              value={item.text} 
+              type="text" id={displayName}
             />
-            <button type="submit">Add Skill</button>
+            <button type="submit">Add {itemName}</button>
           </form>
           <ul>
-              {skills.map((skill) => {
+              {items.map((item) => {
               return (
-              <li key={skill.id}>
-                  {skill.text}
-                  <button onClick={() => handler(skill.id)}>Remove</button>
+              <li key={item.id}>
+                  {item.text}
+                  <button onClick={() => removeHandler(item.id, itemName)}>Remove</button>
               </li>)
               })}
           </ul>
@@ -51,5 +52,5 @@ class UserSkills extends Component {
 
   
   
-  export default UserSkills;
+  export default UserListInput;
   
