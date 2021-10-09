@@ -1,7 +1,11 @@
 import './App.css';
 import React, { Component } from "react";
+import ReactToPrint from "react-to-print";
+import uniqid from "uniqid";
+
 import PreviewResume from "./components/PreviewResume";
-import InputForm from "./components/InputForm";
+import UserPersonalInfo from "./components/UserPersonalInfo";
+import UserSkills from "./components/UserSkills.js";
 
 
 class App extends Component {
@@ -13,6 +17,8 @@ class App extends Component {
       lastName: '',
       phoneNum: '',
       emailAdd: '',
+      githubLink: '',
+      portfolioLink: '',
       education: [
           {
               institution: '',
@@ -20,34 +26,75 @@ class App extends Component {
               yearEnd: 0,
           },
       ],
-      skills: '',// gona use uniqid for this
+      skill: {
+        text: '',
+        id: uniqid()
+      },
+      skills: [],
     };  
-    this.onSubmitResume = this.onSubmitResume.bind(this);
+    this.removeHandler = this.removeHandler.bind(this)
   }
 
   onChangeHandler = (field, value) => {
-    console.log('calle dme');
+    
     this.setState({
       [field]: value,
     });
   }
 
-  onSubmitResume = (e) => {
-    // make a pdf of the resume
-    e.preventDefault();
+  onSkillsChangeHandler = (value) => {
+    console.log('calle dme');
+    this.setState({
+      skill : {
+        text: value,
+        id: this.state.skill.id,
+      }
+    });
   }
 
+  onAddSkill = () => {
+    this.setState(
+      {
+        skills: this.state.skills.concat(this.state.skill),
+        skill: { text: '', 
+                id: uniqid(),
+              },
+      });
+  }
+
+  // remove selected skills from array
+  removeHandler = (id) => {
+    this.setState({
+      skills: this.state.skills.filter((skill) => skill.id!==id),
+    })
+  }
 
   render() {
-    const { onChangeHandler, onSubmitResume } = this;
-    const { firstName } = this.state;
+    const { onChangeHandler, onSkillsChangeHandler, onAddSkill } = this;
+    const {  } = this.state;
 
     return (
       <div className="body">
         <header>Header</header>
         <div className="container">
-          <InputForm onChange={onChangeHandler.bind(this)} />
-          <PreviewResume {...this.state}/>
+          <UserPersonalInfo onChange={onChangeHandler.bind(this)} />
+          <UserSkills 
+            onChange={onSkillsChangeHandler.bind(this)} 
+            onSubmit={onAddSkill.bind(this)}
+            {...this.state} 
+            handler={this.removeHandler}
+          />
+          <ReactToPrint trigger={() => {
+            return <a href="#">Print this out!</a>
+            }}
+            content={() => this.componentRef}
+          />
+          <PreviewResume 
+            ref={el => (this.componentRef = el)} 
+            {...this.state}
+          />
+
+          
         </div>
         <footer>Footer</footer>
       </div>

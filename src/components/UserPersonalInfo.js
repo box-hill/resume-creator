@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-// import uniqid from "uniqid";
 
 
-class InputForm extends Component {
+
+class UserPersonalInfo extends Component {
     constructor(props) {
       super(props);
     }
@@ -10,7 +10,9 @@ class InputForm extends Component {
     onFieldChange(e) {
       const fieldName = e.target.name;
       const fieldValue = e.target.value;
+      
       this.props.onChange(fieldName, fieldValue);
+      
     }
 
     render() {
@@ -33,7 +35,16 @@ class InputForm extends Component {
                   <input onChange={this.onFieldChange.bind(this)} 
                   name="emailAdd" type="text" id="emailAdd"/>
                 </div>
-                <button type="submit">Submit</button>
+
+                <div>
+                  <label htmlFor="githubLink">Github link: </label>
+                  <input onChange={this.onFieldChange.bind(this)} 
+                  name="githubLink" type="text" id="githubLink"/>
+                  <label htmlFor="portfolioLink">Portfolio link: </label>
+                  <input onChange={this.onFieldChange.bind(this)} 
+                  name="portfolioLink" type="text" id="portfolioLink"/>
+                </div>
+
             </form>
         </div>
       )
@@ -42,5 +53,5 @@ class InputForm extends Component {
 
   
   
-  export default InputForm;
+  export default UserPersonalInfo;
   
