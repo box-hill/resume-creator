@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import uniqid from "uniqid";
-
 
 class UserListInput extends Component {
     constructor(props) {
@@ -23,13 +21,13 @@ class UserListInput extends Component {
       return (
         <div>
           <form onSubmit={this.onAddItem.bind(this)}>
-            <label htmlFor={displayName}>{displayName}</label>
+            <label htmlFor={itemName}>{displayName}</label>
             <input 
               maxLength="70"
               onChange={this.onFieldChange.bind(this)}
               name={itemName}
               value={item.text} 
-              type="text" id={displayName}
+              type="text" id={itemName}
             />
             <button type="submit">Add {itemName}</button>
           </form>

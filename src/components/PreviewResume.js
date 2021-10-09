@@ -20,7 +20,9 @@ function returnList(listName){
 class PreviewResume extends React.Component {
     
     render() {
-        const { firstName, lastName, skills, githubLink, phoneNum, emailAdd, awards} = this.props;
+        const { 
+            firstName, lastName, skills, githubLink, phoneNum, emailAdd, awards, educations
+        } = this.props;
         return (
             <div className="preview">
                 <div>

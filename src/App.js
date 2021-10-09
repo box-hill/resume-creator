@@ -6,6 +6,8 @@ import uniqid from "uniqid";
 import PreviewResume from "./components/PreviewResume";
 import UserPersonalInfo from "./components/UserPersonalInfo";
 import UserListInput from "./components/UserListInput.js";
+import UserEducationInfo from "./components/UserEducationInfo.js";
+import UserExperienceInfo from "./components/UserExperienceInfo.js";
 
 
 class App extends Component {
@@ -19,13 +21,24 @@ class App extends Component {
       emailAdd: '',
       githubLink: '',
       portfolioLink: '',
-      education: [
-          {
-              institution: '',
-              yearStart: 0,
-              yearEnd: 0,
-          },
-      ],
+
+      //education
+      degree: '',
+      institution: '',
+      educationStart: '',
+      educationEnd: '',
+      idEducation: uniqid(),
+      education: [],
+
+      //work
+      company: '',
+      jobTitle: '',
+      workStart: '',
+      workEnd: '',
+      idWork: uniqid(),
+      workDes: '',
+      work: [],
+
       skill: {
         text: '',
         id: uniqid()
@@ -48,7 +61,6 @@ class App extends Component {
   }
 
   onListChangeHandler = (field, value) => {
-    console.log('calle dme');
     this.setState({
       [field] : {
         text: value,
@@ -68,6 +80,53 @@ class App extends Component {
       });
   }
 
+  onAddEducationHandler = () => {
+    let obj = {
+      degree: this.state.degree,
+      institution: this.state.institution,
+      educationStart: this.state.educationStart,
+      educationEnd: this.state.educationEnd,
+      idEducation: this.state.idEducation,
+    }
+    console.log(obj);
+    this.setState(
+      {
+        education: this.state.education.concat(obj),
+        degree: '',
+        institution: '',
+        educationStart: '',
+        educationEnd: '',
+        idEducation: uniqid(),
+      });
+    console.log(this.state.education);
+  }
+
+  onAddWorkHandler = () => {
+    let obj = {
+      company: this.state.company,
+      jobTitle: this.state.jobTitle,
+      workStart: this.state.workStart,
+      workEnd: this.state.workEnd,
+      workDes: this.state.workDes,
+      idWork: this.state.idWork,
+    }
+    this.setState(
+      {
+        work: this.state.work.concat(obj),
+        company: '',
+        jobTitle: '',
+        workStart: '',
+        workEnd: '',
+        workDes: '',
+        idWork: '',
+      });
+
+      console.log(this.state.work);
+  }
+
+
+
+
   // remove selected skills from array
   removeHandler = (id, field) => {
     const fieldPlural = field + 's';
@@ -77,7 +136,9 @@ class App extends Component {
   }
 
   render() {
-    const { onChangeHandler, onListChangeHandler, onAddItemHandler } = this;
+    const { onChangeHandler, onListChangeHandler, onAddItemHandler, onAddEducationHandler,
+      onAddWorkHandler,  
+       } = this;
     const {  } = this.state;
 
     return (
@@ -105,8 +166,16 @@ class App extends Component {
             {...this.state} 
             removeHandler={this.removeHandler}
           />
+          <UserEducationInfo onChange={onChangeHandler.bind(this)} {...this.state} />
+          <button onClick={onAddEducationHandler}>Add Education</button>
+
+          <UserExperienceInfo onChange={onChangeHandler.bind(this)} {...this.state} />
+          <button onClick={onAddWorkHandler}>Add Work Experience</button>
+
+
+
           <ReactToPrint trigger={() => {
-            return <a href="#">Print this out!</a>
+            return <a href="#">Save as PDF</a>
             }}
             content={() => this.componentRef}
           />
@@ -114,6 +183,7 @@ class App extends Component {
             ref={el => (this.componentRef = el)} 
             {...this.state}
           />
+          
 
           
         </div>
