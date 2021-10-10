@@ -17,6 +17,7 @@ class App extends Component {
     this.state = {
       firstName: '',
       lastName: '',
+      summary: '',
       phoneNum: '',
       emailAdd: '',
       githubLink: '',
@@ -151,44 +152,46 @@ class App extends Component {
       <div className="body">
         <header>Header</header>
         <div className="container">
-          <UserPersonalInfo onChange={onChangeHandler.bind(this)} />
-          <UserListInput 
-            onChange={onListChangeHandler.bind(this)} 
-            onSubmit={onAddItemHandler.bind(this)}
-            item={this.state.skill}
-            items={this.state.skills}
-            itemName="skill"
-            displayName="Skills: "
-            {...this.state} 
-            removeHandler={this.removeHandler}
-          />
-          <UserListInput 
-            onChange={onListChangeHandler.bind(this)} 
-            onSubmit={onAddItemHandler.bind(this)}
-            item={this.state.award}
-            items={this.state.awards}
-            itemName="award"
-            displayName="Awards: "
-            {...this.state} 
-            removeHandler={this.removeHandler}
-          />
-          <UserEducationInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
-          <button onClick={onAddEducationHandler}>Add Education</button>
+          <div className="user-input-form">
+            <UserPersonalInfo onChange={onChangeHandler.bind(this)} />
+            <UserListInput 
+              onChange={onListChangeHandler.bind(this)} 
+              onSubmit={onAddItemHandler.bind(this)}
+              item={this.state.skill}
+              items={this.state.skills}
+              itemName="skill"
+              displayName="Skills: "
+              {...this.state} 
+              removeHandler={this.removeHandler}
+            />
+            <UserListInput 
+              onChange={onListChangeHandler.bind(this)} 
+              onSubmit={onAddItemHandler.bind(this)}
+              item={this.state.award}
+              items={this.state.awards}
+              itemName="award"
+              displayName="Awards: "
+              {...this.state} 
+              removeHandler={this.removeHandler}
+            />
+            <UserEducationInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
+            <button onClick={onAddEducationHandler}>Add Education</button>
 
-          <UserExperienceInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
-          <button onClick={onAddWorkHandler}>Add Work Experience</button>
-
-
-
-          <ReactToPrint trigger={() => {
-            return <a href="#">Save as PDF</a>
-            }}
-            content={() => this.componentRef}
-          />
-          <PreviewResume 
-            ref={el => (this.componentRef = el)} 
-            {...this.state}
-          />
+            <UserExperienceInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
+            <button onClick={onAddWorkHandler}>Add Work Experience</button>
+            <ReactToPrint trigger={() => {
+              //resume.setAttribute("zoom", "100%");
+              return <a href="#">Save as PDF</a>
+              }}
+              content={() => this.componentRef}
+            />
+          </div>
+          <div ref={el => (this.componentRef = el)} >
+            <PreviewResume 
+              {...this.state}
+            />
+          </div>
+          
           
 
           

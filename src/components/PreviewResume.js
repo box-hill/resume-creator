@@ -21,27 +21,37 @@ class PreviewResume extends React.Component {
     
     render() {
         const { 
-            firstName, lastName, skills, githubLink, phoneNum, emailAdd, awards, educations
+            firstName, lastName, summary, skills, githubLink, phoneNum, emailAdd, awards, educations
         } = this.props;
         return (
-            <div className="preview">
-                <div>
-                    <span className="first-letter">{firstName.charAt(0)}</span>
-                    <span>{firstName.slice(1,firstName.length) + ' '}</span>
-                    <span>{lastName.charAt(0)}</span>
-                    <span>{lastName.slice(1,lastName.length)}</span>                   
-                </div>
-                <div>Phone Number: {phoneNum}</div>
-                <div>Email: {emailAdd}</div>
-                {githubLink.length === 0 ? null :<div>
-                    <a href={githubLink} target="blank">Github</a>
-                </div>
-                }
-                <div>Skills: </div>
-                {returnList(skills)}
+            <div className="resume">
+                <div className='left-column'>
+                    <div className='resume-personal-info'>
+                        <span className="first-letter">{firstName.charAt(0)}</span>
+                        <span>{firstName.slice(1,firstName.length) + ' '}</span>
+                        <span className="first-letter">{lastName.charAt(0)}</span>
+                        <span>{lastName.slice(1,lastName.length)}</span>
 
-                <div>Awards: </div>
-                {returnList(awards)}
+                        
+                        <div>Phone Number: {phoneNum}</div>
+                        <div>Email: {emailAdd}</div>
+                        {githubLink.length === 0 ? null :<div>
+                            <a href={githubLink} target="blank">Github</a>
+                        </div>
+                        }
+                    </div>
+
+                    <div className='resume-academic-info'>
+                        <div>Awards: </div>
+                        {returnList(awards)}                   
+                    </div>
+                </div>
+                
+                <div className='right-column'>
+                    <div className='resume-summary'>{summary}</div>
+                    <div className='resume-skills'>Skills: </div>
+                    {returnList(skills)}
+                </div>
 
             </div>
         );

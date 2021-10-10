@@ -19,13 +19,20 @@ class UserPersonalInfo extends Component {
       return (
         <div>
             <form>
-                <label htmlFor="firstNameInput">First Name: </label>
-                <input onChange={this.onFieldChange.bind(this)} 
-                name="firstName" type="text" id="firstNameInput"/>
+                <div>
+                  <label htmlFor="firstNameInput">First Name: </label>
+                  <input onChange={this.onFieldChange.bind(this)} 
+                  name="firstName" type="text" id="firstNameInput"/>
+                  <label htmlFor="secondNameInput">Last Name: </label>
+                  <input onChange={this.onFieldChange.bind(this)} 
+                  name="lastName" type="text" id="secondNameInput"/>
+                </div>
 
-                <label htmlFor="secondNameInput">Last Name: </label>
-                <input onChange={this.onFieldChange.bind(this)} 
-                name="lastName" type="text" id="secondNameInput"/>
+                <label htmlFor="summaryInput">Summary: </label>
+                <div>
+                  <textarea onChange={this.onFieldChange.bind(this)} 
+                  name="summary" type="text" id="summaryInput" rows="5" cols="50"/>
+                </div>
 
                 <div>
                   <label htmlFor="phoneNum">Phone Number: </label>
