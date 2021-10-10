@@ -27,10 +27,12 @@ class PreviewResume extends React.Component {
             <div className="resume">
                 <div className='left-column'>
                     <div className='resume-personal-info'>
-                        <span className="first-letter">{firstName.charAt(0)}</span>
-                        <span>{firstName.slice(1,firstName.length) + ' '}</span>
-                        <span className="first-letter">{lastName.charAt(0)}</span>
-                        <span>{lastName.slice(1,lastName.length)}</span>
+                        <div>
+                            <span className="first-letter">{firstName.charAt(0)}</span>
+                            <span>{firstName.slice(1,firstName.length) + ' '}</span>
+                            <span className="first-letter">{lastName.charAt(0)}</span>
+                            <span>{lastName.slice(1,lastName.length)}</span>
+                        </div>
 
                         
                         <div>Phone Number: {phoneNum}</div>

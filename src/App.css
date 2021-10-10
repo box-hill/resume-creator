@@ -1,5 +1,5 @@
 :root {
-  --resume-box-height: 35%;
+  --resume-box-height: 25%;
   --resume-box-width: 35%;
 }
 * {
@@ -12,6 +12,7 @@
   flex-direction: column; 
   justify-content: space-between;
   height: 100vh;
+  background-color: rgb(255, 255, 255);
 }
 
 .container {
@@ -36,6 +37,10 @@
   min-height: 700px;
 }
 
+.user-input-form div{
+  margin: 5px;
+}
+
 .resume {
   background-color: pink;
   height: 297mm;
@@ -45,7 +50,7 @@
   top: 20px;
   display: flex;
   flex-wrap: wrap;
-
+  box-shadow: 0 4px 8px 0 rgb(65, 65, 65), 0 6px 20px 0 rgba(51, 51, 51, 0.911);
 }
 
 .left-column {
@@ -62,12 +67,13 @@
 
 .resume-personal-info {
   height: var(--resume-box-height);
-  background-color: pink;
+  background-color: rgb(255, 238, 192);
+  display: flex;
 }
 
 .resume-academic-info {
   height: calc(100% - var(--resume-box-height));
-  background-color: rgb(253, 215, 222);
+  background-color: rgb(253, 246, 215);
 }
 
 .resume-summary {
