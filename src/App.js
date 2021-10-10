@@ -22,12 +22,14 @@ class App extends Component {
       githubLink: '',
       portfolioLink: '',
 
+      id: uniqid(), // ID does not have to be unique between siblings
+
+
       //education
       degree: '',
       institution: '',
       educationStart: '',
       educationEnd: '',
-      idEducation: uniqid(),
       education: [],
 
       //work
@@ -35,7 +37,6 @@ class App extends Component {
       jobTitle: '',
       workStart: '',
       workEnd: '',
-      idWork: uniqid(),
       workDes: '',
       work: [],
 
@@ -86,7 +87,8 @@ class App extends Component {
       institution: this.state.institution,
       educationStart: this.state.educationStart,
       educationEnd: this.state.educationEnd,
-      idEducation: this.state.idEducation,
+      id: this.state.id,
+      
     }
     console.log(obj);
     this.setState(
@@ -96,7 +98,7 @@ class App extends Component {
         institution: '',
         educationStart: '',
         educationEnd: '',
-        idEducation: uniqid(),
+        id: uniqid(),
       });
     console.log(this.state.education);
   }
@@ -108,7 +110,7 @@ class App extends Component {
       workStart: this.state.workStart,
       workEnd: this.state.workEnd,
       workDes: this.state.workDes,
-      idWork: this.state.idWork,
+      id: this.state.id,
     }
     this.setState(
       {
@@ -118,23 +120,27 @@ class App extends Component {
         workStart: '',
         workEnd: '',
         workDes: '',
-        idWork: '',
+        id: uniqid(),
       });
-
-      console.log(this.state.work);
   }
 
 
 
 
   // remove selected skills from array
-  removeHandler = (id, field) => {
-    const fieldPlural = field + 's';
-    this.setState({
-      [fieldPlural]: this.state[fieldPlural].filter((field) => field.id!==id),
-    })
+  removeHandler = (id, field, plural = true) => {
+    if(plural === true){
+      const fieldPlural = field + 's';
+      this.setState({
+        [fieldPlural]: this.state[fieldPlural].filter((field) => field.id!==id),
+      })
+    }
+    else{
+      this.setState({
+        [field]: this.state[field].filter((item) => item.id!==id)
+      })
+    }
   }
-
   render() {
     const { onChangeHandler, onListChangeHandler, onAddItemHandler, onAddEducationHandler,
       onAddWorkHandler,  
@@ -166,10 +172,10 @@ class App extends Component {
             {...this.state} 
             removeHandler={this.removeHandler}
           />
-          <UserEducationInfo onChange={onChangeHandler.bind(this)} {...this.state} />
+          <UserEducationInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
           <button onClick={onAddEducationHandler}>Add Education</button>
 
-          <UserExperienceInfo onChange={onChangeHandler.bind(this)} {...this.state} />
+          <UserExperienceInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
           <button onClick={onAddWorkHandler}>Add Work Experience</button>
 
 

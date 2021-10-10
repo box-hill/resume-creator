@@ -16,7 +16,7 @@ class UserExperienceInfo extends Component {
     }
 
     render() {
-        const { company, jobTitle, workStart, workEnd, workDes } = this.props;
+        const { company, jobTitle, workStart, workEnd, workDes, work, removeHandler} = this.props;
         return (
             <div>
                 <div>Work Experience</div>
@@ -45,8 +45,16 @@ class UserExperienceInfo extends Component {
                     name="workDes" type="text" id="workDes" value={workDes}
                     rows="3"/>
                     </div>
-                    
                 </form>
+                <ul>
+                  {work.map((item) => {
+                  return (
+                    <li key={item.id}>
+                    {item.company}, {item.jobTitle}, {item.workStart} - {item.workEnd}, {item.workDes}
+                    <button onClick={() => removeHandler(item.id, "work", false)}>Remove</button>
+                    </li>)
+                  })}
+                </ul>
             </div>
         )
     }

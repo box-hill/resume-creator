@@ -16,7 +16,7 @@ class UserPersonalInfo extends Component {
     }
 
     render() {
-        const { degree, institution, educationStart, educationEnd } = this.props;
+        const { degree, institution, educationStart, educationEnd, education, removeHandler } = this.props;
         return (
             <div>
                 <div>Education</div>
@@ -37,9 +37,17 @@ class UserPersonalInfo extends Component {
                     <label htmlFor="educationEnd">End Date: </label>
                     <input onChange={this.onFieldChange.bind(this)} 
                     name="educationEnd" type="text" id="educationEnd" value={educationEnd}/>
-                    </div>
-                    
+                    </div>      
                 </form>
+                <ul>
+                  {education.map((item) => {
+                  return (
+                    <li key={item.id}>
+                    {item.degree}, {item.institution}, {item.educationStart} - {item.educationEnd}
+                    <button onClick={() => removeHandler(item.id, "education", false)}>Remove</button>
+                    </li>)
+                  })}
+                </ul>
             </div>
         )
     }
