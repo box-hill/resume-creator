@@ -1,6 +1,6 @@
 # resume-creator
 Generates a resume from user's input  
-👉[LIVE DEMO](https://box-hill.github.io/resume-creator/#)
+[👉LIVE DEMO (incomplete)](https://box-hill.github.io/resume-creator/#)
 
 # To do
 Fix Form Layout and buttons.  
