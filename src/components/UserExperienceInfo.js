@@ -25,6 +25,8 @@ class UserExperienceInfo extends Component {
                     <label htmlFor="company">Company: </label>
                     <input onChange={this.onFieldChange.bind(this)} 
                     name="company" type="text" id="company" value={company}/>
+                    </div>
+                    <div>
                     <label htmlFor="job-title">Job Title: </label>
                     <input onChange={this.onFieldChange.bind(this)} 
                     name="jobTitle" type="text" id="job-title" value={jobTitle}/>
@@ -34,6 +36,8 @@ class UserExperienceInfo extends Component {
                     <label htmlFor="workStart">Start Date: </label>
                     <input onChange={this.onFieldChange.bind(this)} 
                     name="workStart" type="text" id="workStart" value={workStart}/>
+                    </div>
+                    <div>
                     <label htmlFor="workEnd">End Date: </label>
                     <input onChange={this.onFieldChange.bind(this)} 
                     name="workEnd" type="text" id="workEnd" value={workEnd}/>
@@ -41,6 +45,8 @@ class UserExperienceInfo extends Component {
 
                     <div>
                     <label htmlFor="workDes">Work Description: </label>
+                    </div>
+                    <div>
                     <textarea onChange={this.onFieldChange.bind(this)} 
                     name="workDes" type="text" id="workDes" value={workDes}
                     rows="3"/>

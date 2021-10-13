@@ -59,7 +59,6 @@ class App extends Component {
   }
 
   onChangeHandler = (field, value) => {
-    
     this.setState({
       [field]: value,
     });
@@ -85,6 +84,58 @@ class App extends Component {
       });
   }
 
+  generateExample = () => {
+    this.setState(
+      {
+        firstName: 'MICHAEL',
+        lastName: 'SCOTT',
+        summary: `I am the manager of Dundler Mifflin Paper Company. Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way, like an improv conversation. An improversation.`,
+        phoneNum: '9876 1234',
+        emailAdd: 'email@email.com',
+        githubLink: 'https://github.com/box-hill/resume-creator',
+        portfolioLink: 'https://github.com/box-hill/resume-creator',
+        education: [{
+          degree: 'Masters in XYZ',
+          institution: 'University ABC',
+          educationStart: '2006',
+          educationEnd: '2008',
+          id: '1',
+        },
+        {
+          degree: 'Bachelors of ABC',
+          institution: 'University XYZ',
+          educationStart: '1999',
+          educationEnd: '2005',
+          id: '2',
+        }],
+        awards: [{
+          text: 'The DUNDIES 2021',
+          id: '1',
+        },{
+          text: 'The DUNDISE 2020',
+          id: '2'
+        }],
+        skills: [{text: 'This', id: '1'},{text: 'Website', id: '2'},{text: 'was Made', id: '3'},{text: 'using', id: '4'},
+        {text: 'React.js', id: '5'}, {text: 'and vanilla CSS', id: '6'}],
+        work: [{
+          company: 'Dunder Mifflin',
+          jobTitle: 'Manager',
+          workStart: '1992',
+          workEnd: 'Present',
+          workDes: `I'm not superstitious, but I am a little stitious.`,
+          id: '1'
+        },
+        {
+          company: 'Company ABC-XYZ',
+          jobTitle: 'Job Title',
+          workStart: '1234',
+          workEnd: '2345',
+          workDes: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+          id: '2'
+        }]
+      }
+    )
+  }
   onAddEducationHandler = () => {
     let obj = {
       degree: this.state.degree,
@@ -147,7 +198,7 @@ class App extends Component {
   }
   render() {
     const { onChangeHandler, onListChangeHandler, onAddItemHandler, onAddEducationHandler,
-      onAddWorkHandler,  
+      onAddWorkHandler, generateExample
        } = this;
     const {  } = this.state;
 
@@ -182,13 +233,16 @@ class App extends Component {
 
             <UserExperienceInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
             <button onClick={onAddWorkHandler}>Add Work Experience</button>
-            <ReactToPrint trigger={() => {
-              //resume.setAttribute("zoom", "100%");
-              return <a href="#">Save as PDF</a>
-              }}
-              content={() => this.componentRef}
-            />
+            <div><button onClick={generateExample}>Generate Example</button></div>
+            <div>
+              <ReactToPrint trigger={() => {
+                return <a href="#">Save as PDF</a>
+                }}
+                content={() => this.componentRef}
+              />
+            </div>
           </div>
+          
           <div ref={el => (this.componentRef = el)} >
             <PreviewResume 
               {...this.state}

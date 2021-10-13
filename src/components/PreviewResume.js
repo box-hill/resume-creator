@@ -19,6 +19,7 @@ function resumeHeading(text, divider, faIcon = undefined){
 }
 
 function returnList(listName){
+    if(listName.length === 0) return;
     return (
         <ul>
             {listName.map((item) => {
@@ -42,13 +43,28 @@ function returnEducationList(listName){
     )
 }
 
+function returnWorkList(listName){
+    return (
+        <div>
+            {listName.map((item,index) => {
+                return ( <div key={item.id} className='resume-work-list'> 
+                    <div className='jobTitle'>{item.jobTitle}</div>
+                    <div className='company'>{item.company} </div> 
+                    <div className='date'>{item.workStart} — {item.workEnd}</div>
+                    <div className='des'>{item.workDes}</div>
+                </div>)
+            })}
+        </div>
+    )
+}
+
 
 class PreviewResume extends React.Component {
     
     render() {
         const { 
-            firstName, lastName, summary, skills, githubLink, portfolioLink, phoneNum, emailAdd, awards, education
-        } = this.props;
+            firstName, lastName, summary, skills, githubLink, portfolioLink, phoneNum, emailAdd, 
+            awards, education, work } = this.props;
         return (
             <div className="resume">
                 <div className='left-column'>
@@ -103,6 +119,7 @@ class PreviewResume extends React.Component {
                     <div className='resume-experience-skills'>
                         <div>
                             {resumeHeading('WORK HISTORY', 'soft-divider-long', faBriefcase)}
+                            {returnWorkList(work)}
                         </div>
                         <div className='resume-skills'>
                             {resumeHeading('SKILLS', 'soft-divider-long', faCode)}
