@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-
+import UserInputField from './UserInputField';
 
 class UserExperienceInfo extends Component {
     constructor(props) {
@@ -16,47 +15,22 @@ class UserExperienceInfo extends Component {
     }
 
     render() {
-        const { company, jobTitle, workStart, workEnd, workDes, work, removeHandler} = this.props;
+        const { onChange, company, jobTitle, workStart, workEnd, workDes, work, removeHandler} = this.props;
         return (
             <div>
                 <div>Work Experience</div>
                 <form>
-                    <div>
-                    <label htmlFor="company">Company: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="company" type="text" id="company" value={company}/>
-                    </div>
-                    <div>
-                    <label htmlFor="job-title">Job Title: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="jobTitle" type="text" id="job-title" value={jobTitle}/>
-                    </div>
-
-                    <div>
-                    <label htmlFor="workStart">Start Date: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="workStart" type="text" id="workStart" value={workStart}/>
-                    </div>
-                    <div>
-                    <label htmlFor="workEnd">End Date: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="workEnd" type="text" id="workEnd" value={workEnd}/>
-                    </div>
-
-                    <div>
-                    <label htmlFor="workDes">Work Description: </label>
-                    </div>
-                    <div>
-                    <textarea onChange={this.onFieldChange.bind(this)} 
-                    name="workDes" type="text" id="workDes" value={workDes}
-                    rows="3"/>
-                    </div>
+                  <UserInputField onChange={onChange} fieldName="company" displayName="Company: " value={company}/>
+                  <UserInputField onChange={onChange} fieldName="jobTitle" displayName="Job Title: " value={jobTitle}/>
+                  <UserInputField onChange={onChange} fieldName="workStart" displayName="Start Date: " value={workStart}/>
+                  <UserInputField onChange={onChange} fieldName="workEnd" displayName="End Date: " value={workEnd}/>
+                  <UserInputField onChange={onChange} fieldName="workDes" displayName="Work Description: " textarea={true} value={workDes}/>
                 </form>
                 <ul>
                   {work.map((item) => {
                   return (
                     <li key={item.id}>
-                    {item.company}, {item.jobTitle}, {item.workStart} - {item.workEnd}, {item.workDes}
+                    {item.company}, {item.jobTitle}, {item.workStart} - {item.workEnd}
                     <button onClick={() => removeHandler(item.id, "work", false)}>Remove</button>
                     </li>)
                   })}

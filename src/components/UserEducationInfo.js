@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-
+import UserInputField from './UserInputField';
 
 class UserPersonalInfo extends Component {
     constructor(props) {
@@ -16,33 +15,15 @@ class UserPersonalInfo extends Component {
     }
 
     render() {
-        const { degree, institution, educationStart, educationEnd, education, removeHandler } = this.props;
+        const { onChange, degree, institution, educationStart, educationEnd, education, removeHandler } = this.props;
         return (
             <div>
                 <div>Education</div>
                 <form>
-                    <div>
-                    <label htmlFor="degree">Degree: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="degree" type="text" id="degree" value={degree}/>
-                    </div>
-                    <div>
-                    <label htmlFor="institution">Institution: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="institution" type="text" id="institution" value={institution}/>
-                    </div>
-                    
-
-                    <div>
-                    <label htmlFor="educationStart">Start Date: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="educationStart" type="text" id="educationStart" value={educationStart}/>
-                    </div>
-                    <div>
-                    <label htmlFor="educationEnd">End Date: </label>
-                    <input onChange={this.onFieldChange.bind(this)} 
-                    name="educationEnd" type="text" id="educationEnd" value={educationEnd}/>
-                    </div>      
+                  <UserInputField onChange={onChange} fieldName="degree" displayName="Degree: " value={degree}/>
+                  <UserInputField onChange={onChange} fieldName="institution" displayName="Institution: " value={institution}/>
+                  <UserInputField onChange={onChange} fieldName="educationStart" displayName="Start Date: " value={educationStart}/>
+                  <UserInputField onChange={onChange} fieldName="educationEnd" displayName="End Date: " value={educationEnd}/>  
                 </form>
                 <ul>
                   {education.map((item) => {

@@ -13,6 +13,7 @@ import UserEducationInfo from "./components/UserEducationInfo.js";
 import UserExperienceInfo from "./components/UserExperienceInfo.js";
 
 
+
 class App extends Component {
   constructor() {
     super();
@@ -211,22 +212,14 @@ class App extends Component {
             <UserListInput 
               onChange={onListChangeHandler.bind(this)} 
               onSubmit={onAddItemHandler.bind(this)}
-              item={this.state.skill}
-              items={this.state.skills}
-              itemName="skill"
-              displayName="Skills: "
-              {...this.state} 
-              removeHandler={this.removeHandler}
+              item={this.state.skill} items={this.state.skills} itemName="skill" 
+              displayName="Skills: " {...this.state} removeHandler={this.removeHandler}
             />
             <UserListInput 
               onChange={onListChangeHandler.bind(this)} 
               onSubmit={onAddItemHandler.bind(this)}
-              item={this.state.award}
-              items={this.state.awards}
-              itemName="award"
-              displayName="Awards: "
-              {...this.state} 
-              removeHandler={this.removeHandler}
+              item={this.state.award} items={this.state.awards} itemName="award"
+              displayName="Awards: " {...this.state} removeHandler={this.removeHandler}
             />
             <UserEducationInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
             <button onClick={onAddEducationHandler}>Add Education</button>
