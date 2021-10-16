@@ -15,7 +15,7 @@
   justify-content: space-between;
   height: 100vh;
   background-color: rgb(255, 255, 255);
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .container {
