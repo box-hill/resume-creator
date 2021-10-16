@@ -3,16 +3,14 @@ import React, { Component } from "react";
 import ReactToPrint from "react-to-print";
 import uniqid from "uniqid";
 
-
-
-
 import PreviewResume from "./components/PreviewResume";
 import UserPersonalInfo from "./components/UserPersonalInfo";
 import UserListInput from "./components/UserListInput.js";
 import UserEducationInfo from "./components/UserEducationInfo.js";
 import UserExperienceInfo from "./components/UserExperienceInfo.js";
 
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faGithub} from '@fortawesome/free-brands-svg-icons'
 
 class App extends Component {
   constructor() {
@@ -205,7 +203,7 @@ class App extends Component {
 
     return (
       <div className="body">
-        <header>Header</header>
+        <header>R<span>ESUME</span> C<span>REATOR</span></header>
         <div className="container">
           <div className="user-input-form">
             <UserPersonalInfo onChange={onChangeHandler.bind(this)} />
@@ -246,7 +244,10 @@ class App extends Component {
 
           
         </div>
-        <footer>Footer</footer>
+        <footer>
+          <a href="https://github.com/box-hill" target="blank"><FontAwesomeIcon icon={faGithub}/></a>
+          Made by Aaron L.
+        </footer>
       </div>
     );
   }

@@ -125,11 +125,7 @@ class PreviewResume extends React.Component {
                             {resumeHeading('SKILLS', 'soft-divider-long', faCode)}
                             {returnList(skills)}
                         </div>
-                    </div>
-                    
-
-                    
-                    
+                    </div>           
                 </div>
 
             </div>
