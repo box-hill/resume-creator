@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/resume-creator/static/css/main.e66dae48.chunk.css",
+    "main.css": "/resume-creator/static/css/main.86b650e3.chunk.css",
     "main.js": "/resume-creator/static/js/main.b6c9ebec.chunk.js",
     "main.js.map": "/resume-creator/static/js/main.b6c9ebec.chunk.js.map",
     "runtime-main.js": "/resume-creator/static/js/runtime-main.34c99479.js",
@@ -8,13 +8,13 @@
     "static/js/2.4682c87a.chunk.js": "/resume-creator/static/js/2.4682c87a.chunk.js",
     "static/js/2.4682c87a.chunk.js.map": "/resume-creator/static/js/2.4682c87a.chunk.js.map",
     "index.html": "/resume-creator/index.html",
-    "static/css/main.e66dae48.chunk.css.map": "/resume-creator/static/css/main.e66dae48.chunk.css.map",
+    "static/css/main.86b650e3.chunk.css.map": "/resume-creator/static/css/main.86b650e3.chunk.css.map",
     "static/js/2.4682c87a.chunk.js.LICENSE.txt": "/resume-creator/static/js/2.4682c87a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.34c99479.js",
     "static/js/2.4682c87a.chunk.js",
-    "static/css/main.e66dae48.chunk.css",
+    "static/css/main.86b650e3.chunk.css",
     "static/js/main.b6c9ebec.chunk.js"
   ]
 }
