@@ -1,5 +1,5 @@
 # resume-creator
-Generates a resume (pdf) from the user's input.
+Generates a resume (pdf) from the user's input.  
 [👉LIVE DEMO](https://box-hill.github.io/resume-creator/#)
 
 # Features
