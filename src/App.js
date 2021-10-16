@@ -8,6 +8,7 @@ import UserPersonalInfo from "./components/UserPersonalInfo";
 import UserListInput from "./components/UserListInput.js";
 import UserEducationInfo from "./components/UserEducationInfo.js";
 import UserExperienceInfo from "./components/UserExperienceInfo.js";
+import UserColorChoice from './components/UserColorChoice';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faGithub} from '@fortawesome/free-brands-svg-icons'
@@ -25,7 +26,11 @@ class App extends Component {
       githubLink: '',
       portfolioLink: '',
 
-      id: uniqid(), // ID does not have to be unique between siblings
+      id: uniqid(),
+
+      colorA: '#73AD21',
+      colorB: '#d8e1cb',
+      colorC: '#121212',
 
 
       //education
@@ -88,7 +93,7 @@ class App extends Component {
       {
         firstName: 'MICHAEL',
         lastName: 'SCOTT',
-        summary: `I am the manager of Dundler Mifflin Paper Company. Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way, like an improv conversation. An improversation.`,
+        summary: `Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way, like an improv conversation. An improversation.`,
         phoneNum: '9876 1234',
         emailAdd: 'email@email.com',
         githubLink: 'https://github.com/box-hill/resume-creator',
@@ -178,8 +183,36 @@ class App extends Component {
       });
   }
 
+  changeTheme = (key) => {
+    if(key === 'a'){
+      this.setState(
+        {
+          colorA: '#73ad21',
+          colorB: '#d8e1cb',
+          colorC: '#121212',
+        }
+      )
+    }
+    else if (key === 'b'){
+      this.setState(
+        {
+          colorA: '#00ADB5',
+          colorB: '#EEEEEE',
+          colorC: '#222831',
+        }
+      )
+    }
+    else {
+      this.setState(
+        {
+          colorA: '#3F72AF',
+          colorB: '#DBE2EF',
+          colorC: '#112D4E',
+        }
+      )
+    }
 
-
+  }
 
   // remove selected skills from array
   removeHandler = (id, field, plural = true) => {
@@ -197,8 +230,7 @@ class App extends Component {
   }
   render() {
     const { onChangeHandler, onListChangeHandler, onAddItemHandler, onAddEducationHandler,
-      onAddWorkHandler, generateExample
-       } = this;
+      onAddWorkHandler, generateExample, changeTheme } = this;
     const {  } = this.state;
 
     return (
@@ -219,15 +251,25 @@ class App extends Component {
               item={this.state.award} items={this.state.awards} itemName="award"
               displayName="Awards: " {...this.state} removeHandler={this.removeHandler}
             />
+            <div className='form-divider'></div>
             <UserEducationInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
-            <button onClick={onAddEducationHandler}>Add Education</button>
-
+            <div className='center-element'>
+              <button onClick={onAddEducationHandler}>Add Education</button>
+            </div>
+            <div className='form-divider'></div>
             <UserExperienceInfo onChange={onChangeHandler.bind(this)} {...this.state} removeHandler={this.removeHandler}/>
-            <button onClick={onAddWorkHandler}>Add Work Experience</button>
-            <div><button onClick={generateExample}>Generate Example</button></div>
-            <div>
+            <div className='center-element'>
+              <button onClick={onAddWorkHandler}>Add Work Experience</button>
+            </div>
+            <div className='form-divider'></div>
+            <UserColorChoice onChange={onChangeHandler.bind(this)} changeTheme={changeTheme.bind(this)} {...this.state}/>
+            <div className='form-divider'></div>
+            <div className="center-element">
+              <button onClick={generateExample}>Generate Example</button>
+            </div>
+            <div className="center-element">
               <ReactToPrint trigger={() => {
-                return <a href="#">Save as PDF</a>
+                return <button href="#">Save as PDF</button>
                 }}
                 content={() => this.componentRef}
               />

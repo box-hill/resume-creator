@@ -20,23 +20,29 @@ class UserListInput extends Component {
       const { item, items, itemName, displayName, removeHandler } = this.props;
       return (
         <div>
-          <form onSubmit={this.onAddItem.bind(this)}>
-            <label htmlFor={itemName}>{displayName}</label>
+          <div className='form-divider'></div>
+          <form onSubmit={this.onAddItem.bind(this)} className="input-line">
             <input 
               maxLength="70"
               onChange={this.onFieldChange.bind(this)}
               name={itemName}
               value={item.text} 
               type="text" id={itemName}
+              placeholder=" "
             />
-            <button type="submit">Add {itemName}</button>
+            <label htmlFor={itemName}>{displayName}</label>
+            <div className='center-element'>
+              <button type="submit">Add {itemName}</button>
+            </div>
           </form>
           <ul>
               {items.map((item) => {
               return (
               <li key={item.id}>
                   {item.text}
-                  <button onClick={() => removeHandler(item.id, itemName)}>Remove</button>
+                  <div>
+                    <button onClick={() => removeHandler(item.id, itemName)}>Remove</button>
+                  </div>
               </li>)
               })}
           </ul>

@@ -27,7 +27,10 @@ header, footer {
   color: white;
   background-color:rgba(51, 51, 51, 0.911);
   padding: 20px;
-  margin-bottom: 20px;
+}
+
+header {
+  margin-bottom: 20px
 }
 
 header span {
@@ -36,17 +39,82 @@ header span {
 
 footer {
   font-size: 18px;
+  margin-top: 20px
 }
 
-.fa-github {
+footer .fa-github {
   color: white;
   font-size: 20px;
   transition: transform 0.3s ease-in-out;
   margin-right: 15px;
 }
 
-.fa-github:hover {
+footer .fa-github:hover {
   transform: rotate(360deg) scale(1.2);
+}
+
+.user-input-form {
+  border: 8px solid rgb(43, 43, 43);
+  border-radius: 20px;
+  margin-bottom: 10px;
+  min-width: 600px;
+  max-width: 700px;
+  display: block;
+}
+
+.form-divider {
+  content: '';
+  width: 100%;
+  height: 8px;
+  background: rgb(0, 0, 0);
+  margin: 15px 0px;
+}
+
+.user-input-form form, .form-heading{
+  margin: 10px;
+}
+
+.form-heading{
+  font-size: 26px;
+  font-weight: 500;
+}
+.user-input-form button {
+  margin: 10px 10px 25px 10px;
+  width: 90%;
+  font-size: 16px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+}
+
+textarea {
+  max-width: 100%;
+}
+
+.input-line input {
+  width: 75%;
+  font-size: 15px;
+  margin-top: 1.5rem;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.input-line input:focus {
+  outline: none;
+  border-color: rgb(80, 23, 19);
+}
+
+.input-line label {
+  color:rgb(102, 102, 102);
+  display: block;
+  transform: translate(0.25rem, -1.5rem);
+  transition: all 0.3s ease-in-out;
+}
+
+.input-line input:focus + label,
+.input-line input:not(:placeholder-shown) + label {
+  color: rgb(0, 0, 0);
+  transform: translate(0, -2.75rem);
 }
 
 .container {
@@ -54,6 +122,10 @@ footer {
   flex-wrap: wrap;
   flex-grow: 0;
   justify-content: space-evenly;
+}
+
+.center-element {
+  text-align: center;
 }
 
 .input-form {
@@ -70,14 +142,6 @@ footer {
   font-size: 36px;
   letter-spacing: 3px;
   font-weight: 500;
-}
-
-.user-input-form {
-  max-width: 700px;
-}
-
-.user-input-form div{
-  margin: 5px;
 }
 
 .resume {
@@ -263,4 +327,8 @@ footer {
   font-weight: 300;
   word-spacing: 3px;
   margin-bottom: 40px;
+}
+
+.theme-button-box { 
+  display: flex;
 }

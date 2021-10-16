@@ -18,7 +18,7 @@ class UserPersonalInfo extends Component {
         const { onChange, degree, institution, educationStart, educationEnd, education, removeHandler } = this.props;
         return (
             <div>
-                <div>Education</div>
+                <div className="form-heading">Education</div>
                 <form>
                   <UserInputField onChange={onChange} fieldName="degree" displayName="Degree: " value={degree}/>
                   <UserInputField onChange={onChange} fieldName="institution" displayName="Institution: " value={institution}/>

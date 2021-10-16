@@ -18,12 +18,12 @@ function resumeHeading(text, divider, faIcon = undefined){
     )
 }
 
-function returnList(listName){
+function returnList(listName, backgroundColor = '#FFFFFF'){
     if(listName.length === 0) return;
     return (
         <ul>
             {listName.map((item) => {
-            return <li key={item.id}> {item.text}</li>
+            return <li key={item.id} style={{'backgroundColor': backgroundColor}}>{item.text}</li>
             })}
         </ul>
     )
@@ -64,11 +64,11 @@ class PreviewResume extends React.Component {
     render() {
         const { 
             firstName, lastName, summary, skills, githubLink, portfolioLink, phoneNum, emailAdd, 
-            awards, education, work } = this.props;
+            awards, education, work, colorA, colorB, colorC } = this.props;
         return (
             <div className="resume">
                 <div className='left-column'>
-                    <div className='resume-personal-info'>
+                    <div className='resume-personal-info' style={{'backgroundColor': colorA}}>
                         <div className="resume-name">
                             <div>
                                 <span className="first-letter">{firstName.charAt(0)}</span>
@@ -97,20 +97,20 @@ class PreviewResume extends React.Component {
                         </div>
                     </div>
 
-                    <div className='resume-academic-info'>
+                    <div className='resume-academic-info' style={{'backgroundColor': colorA}}>
                         <div>
                             {resumeHeading('EDUCATION', 'soft-divider-short', faSchool)}
                             {returnEducationList(education)}
                         </div>
                         <div>
                             {resumeHeading('AWARDS', 'soft-divider-short', faTrophy)}
-                            {returnList(awards)}                   
+                            {returnList(awards, colorA)}                   
                         </div>
                     </div>
                 </div>
                 
                 <div className='right-column'>
-                    <div className='resume-summary'>
+                    <div className='resume-summary' style={{'backgroundColor': colorB}}>
                         {resumeHeading('PROFILE', 'soft-divider-long', faUser)}
                         
                         <div className='resume-summary-content'>{summary}</div>
@@ -123,7 +123,7 @@ class PreviewResume extends React.Component {
                         </div>
                         <div className='resume-skills'>
                             {resumeHeading('SKILLS', 'soft-divider-long', faCode)}
-                            {returnList(skills)}
+                            {returnList(skills, colorC)}
                         </div>
                     </div>           
                 </div>

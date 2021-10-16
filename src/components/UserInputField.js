@@ -13,16 +13,23 @@ class UserInputField extends Component {
     }
 
     render() {
-      const { fieldName, displayName, textarea, value } = this.props;
-
+      const { fieldName, displayName, textarea, value, type} = this.props;
+      let inputType = type;
+      if(inputType!=='color'){
+        inputType = 'text';
+      }
       return (
         <div>
-          <label htmlFor={fieldName}>{displayName}</label>
           { textarea===true ? 
-          <div>
-            <textarea onChange={this.onFieldChange.bind(this)} name={fieldName} type="text" id={fieldName} rows="5" cols="50" value={value}/> 
+          <div className='text-area'>
+            <div><label htmlFor={fieldName}>{displayName}</label></div>
+            <textarea onChange={this.onFieldChange.bind(this)} name={fieldName} type={inputType} id={fieldName} rows="6" cols="60" value={value}/> 
+          </div>:
+          <div className='input-line'>
+            <input onChange={this.onFieldChange.bind(this)} name={fieldName} type={inputType} id={fieldName} value={value} placeholder=' '/>
+            <label htmlFor={fieldName}>{displayName}</label>
           </div>
-          : <input onChange={this.onFieldChange.bind(this)} name={fieldName} type="text" id={fieldName} value={value}/>}
+          }
         </div>
       )
     }

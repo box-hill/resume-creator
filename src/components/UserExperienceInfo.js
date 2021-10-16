@@ -18,10 +18,10 @@ class UserExperienceInfo extends Component {
         const { onChange, company, jobTitle, workStart, workEnd, workDes, work, removeHandler} = this.props;
         return (
             <div>
-                <div>Work Experience</div>
+                <div className="form-heading">Work Experience</div>
                 <form>
-                  <UserInputField onChange={onChange} fieldName="company" displayName="Company: " value={company}/>
                   <UserInputField onChange={onChange} fieldName="jobTitle" displayName="Job Title: " value={jobTitle}/>
+                  <UserInputField onChange={onChange} fieldName="company" displayName="Company: " value={company}/>
                   <UserInputField onChange={onChange} fieldName="workStart" displayName="Start Date: " value={workStart}/>
                   <UserInputField onChange={onChange} fieldName="workEnd" displayName="End Date: " value={workEnd}/>
                   <UserInputField onChange={onChange} fieldName="workDes" displayName="Work Description: " textarea={true} value={workDes}/>
