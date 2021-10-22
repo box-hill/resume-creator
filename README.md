@@ -12,4 +12,4 @@ Generates a resume (pdf) from the user's input.
 ### 🛠️ Made with
  * React.js
  * Vanilla CSS
- * npm
+ * npm packages: react-to-print (to generate pdf), Font Awesome (svg icons)
