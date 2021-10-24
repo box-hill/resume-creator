@@ -281,14 +281,11 @@ class App extends Component {
               {...this.state}
             />
           </div>
-          
-          
-
-          
+   
         </div>
         <footer>
           <a href="https://github.com/box-hill" target="blank"><FontAwesomeIcon icon={faGithub}/></a>
-          Made by Aaron L.
+          Copyright © 2021 Aaron L
         </footer>
       </div>
     );
