@@ -28,10 +28,9 @@ class App extends Component {
 
       id: uniqid(),
 
-      colorA: '#73AD21',
-      colorB: '#d8e1cb',
-      colorC: '#121212',
-
+      colorA: '#3F72AF',
+      colorB: '#DBE2EF',
+      colorC: '#112D4E',
 
       //education
       degree: '',
